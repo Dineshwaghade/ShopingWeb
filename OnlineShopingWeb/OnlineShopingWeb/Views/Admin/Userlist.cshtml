@@ -1,15 +1,22 @@
 ﻿@model IEnumerable<OnlineShopingWeb.Models.User>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Userlist";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+<section class="content-header">
+    <h1>
+        User List
+        @*   <small>Preview</small>*@
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">User List</li>
+    </ol>
+</section>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.First_Name)
@@ -38,7 +45,7 @@
             @Html.DisplayFor(modelItem => item.First_Name)
         </td>
         <td>
-            @Html.DisplayNameFor(model => model.Last_Name)
+            @Html.DisplayFor(modelItem => item.Last_Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Gender)

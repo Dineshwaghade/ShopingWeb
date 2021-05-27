@@ -1,0 +1,96 @@
+﻿@model OnlineShopingWeb.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registration</title>
+    <link href="~/content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="~/content/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="~/content/css/sb-admin.css" rel="stylesheet">
+
+</head>
+
+
+<body class="bg-dark">
+   @using (Html.BeginForm())
+   {
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="container">
+            <div class="card card-register mx-auto mt-5">
+                <div class="card-header">Register an Account</div>
+                <div class="card-body">
+                    
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.First_Name)
+                                    @Html.EditorFor(model => model.First_Name, new { htmlAttributes = new { @class = "form-control", @placeholder="Enter First Name" } })
+                                    @Html.ValidationMessageFor(model => model.First_Name, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Last_Name)
+                                    @Html.EditorFor(model => model.Last_Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Last Name" } })
+                                    @Html.ValidationMessageFor(model => model.Last_Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Gender)
+                                    @Html.RadioButtonFor(model => model.Gender, "Male", new { @checked = true, htmlAttributes = new { @class = "form-control" } }) <span> Male</span> 
+                                    @Html.RadioButtonFor(model => model.Gender, "Female", new { htmlAttributes = new { @class = "form-control" } }) <span> Female</span>                                    
+                                    @Html.ValidationMessageFor(model => model.Contact, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email)
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Email" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Password)
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Password" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.ConfirmPassword)
+                                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter ConfirmPassword" } })
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    <input type="submit" value="Register" class="btn btn-primary btn-block" />
+
+                    <div class="text-center">
+                        <a class="d-block small mt-3" href="@Url.Action("Login","User")">Login Page</a>
+                        <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+     
+
+
+
+    </div>
+   }
+    </body>
+
+</html>

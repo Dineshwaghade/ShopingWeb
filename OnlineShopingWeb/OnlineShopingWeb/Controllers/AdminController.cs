@@ -13,8 +13,14 @@ namespace OnlineShopingWeb.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult Userlist()
+        {
             var data = db.Users.ToList();
             return View(data);
+
         }
     }
 }

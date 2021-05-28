@@ -39,15 +39,22 @@ namespace OnlineShopingWeb.Controllers
         }
         [HttpPost]
         public ActionResult Login(User usr)
+
         {
             int count = db.Users.Where(x => x.Email == usr.Email && x.Password == usr.Password).Count();
             if(count>0)
             {
-                Session["username"] = usr.First_Name;
+                User data = new Models.UserModel.User();
+                data = db.Users.Where(x => x.Email == usr.Email && x.Password == usr.Password).FirstOrDefault();
+                Session["Data"] =data;
                 return RedirectToAction("index", "Home");
             }
             return View();
         }
-
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("index","home");
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using OnlineShopingWeb.Models;
+using OnlineShopingWeb.Models.UserModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

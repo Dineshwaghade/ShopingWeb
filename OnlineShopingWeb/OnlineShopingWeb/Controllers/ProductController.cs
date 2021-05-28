@@ -1,5 +1,5 @@
 ﻿using OnlineShopingWeb.Models;
-using OnlineShopingWeb.Models.Product;
+using OnlineShopingWeb.Models.ProductModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -131,7 +131,7 @@ namespace OnlineShopingWeb.Controllers
 
         public ActionResult ProductList()
         {
-            var plist = db.Categories.ToList();
+            var plist = db.Products.ToList();
             return View(plist);
         }
     }

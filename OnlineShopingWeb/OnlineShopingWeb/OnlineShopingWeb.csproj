@@ -136,8 +136,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DataContext.cs" />
-    <Compile Include="Models\Product\Category.cs" />
-    <Compile Include="Models\Product\SubCategory.cs" />
+    <Compile Include="Models\ProductModel\Category.cs" />
+    <Compile Include="Models\ProductModel\Product.cs" />
+    <Compile Include="Models\ProductModel\SubCategory.cs" />
     <Compile Include="Models\UserModel\User.cs" />
     <Compile Include="Models\UserModel\Address.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

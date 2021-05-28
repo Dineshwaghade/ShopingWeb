@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace OnlineShopingWeb.Models.Product
+namespace OnlineShopingWeb.Models.ProductModel
 {
     public class Category
     {

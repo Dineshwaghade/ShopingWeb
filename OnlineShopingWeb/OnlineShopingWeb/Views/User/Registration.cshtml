@@ -49,11 +49,17 @@
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    @Html.LabelFor(model => model.Gender)
+                                    @Html.LabelFor(model => model.Gender)<br/>
                                     @Html.RadioButtonFor(model => model.Gender, "Male", new { @checked = true, htmlAttributes = new { @class = "form-control" } }) <span> Male</span> 
                                     @Html.RadioButtonFor(model => model.Gender, "Female", new { htmlAttributes = new { @class = "form-control" } }) <span> Female</span>                                    
                                     @Html.ValidationMessageFor(model => model.Contact, "", new { @class = "text-danger" })
                                 </div>
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Contact)
+                                    @Html.EditorFor(model => model.Contact, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Last Name" } })
+                                    @Html.ValidationMessageFor(model => model.Contact, "", new { @class = "text-danger" })
+                                </div>
+
                             </div>
                         </div>
                         <div class="form-group">

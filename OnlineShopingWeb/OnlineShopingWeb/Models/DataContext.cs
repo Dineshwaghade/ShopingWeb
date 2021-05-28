@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineShopingWeb.Models.Product;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -10,5 +11,8 @@ namespace OnlineShopingWeb.Models
     {
         public DataContext():base("conn"){}
         public DbSet<User> Users { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<SubCategory> SubCategories { get; set; }
+   
     }
 }

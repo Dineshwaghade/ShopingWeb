@@ -1,0 +1,76 @@
+﻿@model OnlineShopingWeb.Models.ProductModel.Product
+
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Product Details
+        @*   <small>Preview</small>*@
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Product Details</li>
+    </ol>
+</section>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubCategory.SubCategory_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubCategory.SubCategory_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <a href="@Url.Action("EditProduct", "Product",new { id = Model.Product_id })" class="btn btn-primary">Edit</a>
+        <a href="@Url.Action("ProductList", "Product")" class="btn btn-primary">Cancel</a>
+
+
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "EditProduct", new { id = Model.Product_id }) |
+    @Html.ActionLink("Back to List", "ProductList")
+</p>

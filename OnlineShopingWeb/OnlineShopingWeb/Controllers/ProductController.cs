@@ -134,5 +134,66 @@ namespace OnlineShopingWeb.Controllers
             var plist = db.Products.ToList();
             return View(plist);
         }
+        [HttpGet]
+        public ActionResult AddProduct()
+        {
+            List<SubCategory> lst = db.SubCategories.ToList();
+            ViewBag.SCList = new SelectList(lst, "SubCategory_id", "SubCategory_Name");
+            ViewBag.ProductList = db.Products.ToList();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddProduct(Product prod)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Products.Add(prod);
+                db.SaveChanges();
+                ViewBag.success = "Added Successfully";
+            }
+            ViewBag.ProductList = db.Products.ToList();
+
+
+
+            return RedirectToAction("AddProduct");
+        }
+
+        [HttpGet]
+        public ActionResult EditProduct(int id)
+        {
+            List<SubCategory> lst = db.SubCategories.ToList();
+            ViewBag.SCList = new SelectList(lst, "SubCategory_id", "SubCategory_Name");
+
+            var data = db.Products.Find(id);
+            return View(data);
+        }
+        [HttpPost]
+        public ActionResult EditProduct(Product prod)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(prod).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                ViewBag.Success = "Added Succesfully";
+                return RedirectToAction("ProductList", "Product");
+            }
+            return View();
+        }
+        public ActionResult DeleteProduct(int id)
+        {
+            var data = db.Products.Find(id);
+            if (data != null)
+            {
+                db.Products.Remove(data);
+                db.SaveChanges();
+            }
+            return RedirectToAction("ProductList");
+        }
+        public ActionResult ProductDetails(int id)
+        {
+            var data = db.Products.Find(id);
+            return View(data);
+        }
+
     }
 }

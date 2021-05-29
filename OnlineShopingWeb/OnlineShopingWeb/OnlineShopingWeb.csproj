@@ -157,6 +157,10 @@
     <Content Include="Views\Product\EditCategory.cshtml" />
     <Content Include="Views\Product\AddSubCategory.cshtml" />
     <Content Include="Views\Product\EditSubCategory.cshtml" />
+    <Content Include="Views\Product\ProductList.cshtml" />
+    <Content Include="Views\Product\AddProduct.cshtml" />
+    <Content Include="Views\Product\EditProduct.cshtml" />
+    <Content Include="Views\Product\ProductDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

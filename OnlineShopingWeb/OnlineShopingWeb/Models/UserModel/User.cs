@@ -20,5 +20,7 @@ namespace OnlineShopingWeb.Models.UserModel
         [NotMapped] // Does not effect with your database
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
+        public string Role_Name { get; set; }
+        public string Status { get; set; }
     }
 }

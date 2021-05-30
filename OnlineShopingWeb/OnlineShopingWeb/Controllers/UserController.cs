@@ -26,6 +26,8 @@ namespace OnlineShopingWeb.Controllers
         {
             if(ModelState.IsValid)
             {
+                usr.Role_Name = "User";        //default role user
+                usr.Status = "Active";      //default active
                 db.Users.Add(usr);
                 db.SaveChanges();
                 return RedirectToAction("Login");

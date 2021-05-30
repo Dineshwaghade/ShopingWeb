@@ -13,7 +13,7 @@ namespace OnlineShopingWeb.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var list = db.Users.ToList();
+            var list = db.Products.ToList();
             return View(list);
         }
     }

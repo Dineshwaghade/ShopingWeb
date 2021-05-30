@@ -216,7 +216,7 @@ namespace OnlineShopingWeb.Controllers
                 if (prod.UserImageFile != null)
                 {
                     //------------- delete previous image from folder
-                    if (prod.Product_Image != "~/Images/img-not-found.png")
+                    if (prod.Product_Image != "~/Images/img-not-found.png" && prod.Product_Image!=null)
                     {
                         var imgpath = Server.MapPath(TempData["UserImage"].ToString());
                         System.IO.File.Delete(imgpath);

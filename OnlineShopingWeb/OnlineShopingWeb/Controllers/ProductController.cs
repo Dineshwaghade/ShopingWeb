@@ -196,6 +196,16 @@ namespace OnlineShopingWeb.Controllers
             ViewBag.SCList = new SelectList(lst, "SubCategory_id", "SubCategory_Name");
 
             var data = db.Products.Find(id);
+            if (data.Product_Image!= null)
+            {
+                TempData["UserImage"] = data.Product_Image;
+                TempData.Keep();
+            }
+            if (data.Product_Image == null || data.Product_Image == string.Empty)
+            {
+                data.Product_Image = "~/Images/img-not-found.png";
+            }
+
             return View(data);
         }
         [HttpPost]
@@ -203,6 +213,37 @@ namespace OnlineShopingWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (prod.UserImageFile != null)
+                {
+                    //------------- delete previous image from folder
+                    if (prod.Product_Image != "~/Images/img-not-found.png")
+                    {
+                        var imgpath = Server.MapPath(TempData["UserImage"].ToString());
+                        System.IO.File.Delete(imgpath);
+
+                    }
+                    //--------- to insert new image in folder
+                    var filename = Path.GetFileNameWithoutExtension(prod.UserImageFile.FileName);
+                    var fileextension = Path.GetExtension(prod.UserImageFile.FileName);
+
+                    filename = filename + DateTime.Now.ToString("yymmssff") + fileextension;
+
+                    prod.Product_Image = "~/Images/ProductImages/" + filename;
+                    filename = Path.Combine(Server.MapPath("~/Images/ProductImages/"), filename);
+                    prod.UserImageFile.SaveAs(filename);
+                }
+
+                if (prod.Product_Image == "~/Images/img-not-found.png")
+                {
+                    prod.Product_Image = null;
+                    if (TempData["UserImage"].ToString() != null)
+                    {
+                        var imgpath = Server.MapPath(TempData["UserImage"].ToString());
+                        System.IO.File.Delete(imgpath);
+                    }
+                }
+
+
                 db.Entry(prod).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 ViewBag.Success = "Added Succesfully";

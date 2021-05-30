@@ -4,6 +4,11 @@
     ViewBag.Title = "EditProduct";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<head>
+    @*<link href="~/Content/css/CustomStyle.css" rel="stylesheet" />*@
+    <link href="~/Content/css/ProfileStyleSheet.css" rel="stylesheet" />
+</head>
+
 <section class="content-header">
     <h1>
         Edit Product
@@ -15,64 +20,88 @@
     </ol>
 </section>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("EditProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Product_id)
-        <div class="form-group">
-            @Html.Label("Sub category Name", htmlAttributes: new { @class = "control-label col-md-2" })
-            @*@Html.LabelFor(model => model.SubCategory_id, "SubCategory_id", htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <div class="col-md-6">
-                @Html.DropDownListFor(model => model.SubCategory_id, @ViewBag.SCList as SelectList, "--select--", htmlAttributes: new { @class = "form-control" })
-                @*@Html.DropDownList("SubCategory_id", null, htmlAttributes: new { @class = "form-control" })*@
-                @Html.ValidationMessageFor(model => model.SubCategory_id, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" style="border:solid 1px blue;">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Product_Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
-                @Html.EditorFor(model => model.Product_Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Product_Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Product_id)
+                    <div class="form-group">
+                        @Html.Label("Sub category Name", htmlAttributes: new { @class = "control-label col-md-4" })
+                        @*@Html.LabelFor(model => model.SubCategory_id, "SubCategory_id", htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <div class="col-md-8">
+                            @Html.DropDownListFor(model => model.SubCategory_id, @ViewBag.SCList as SelectList, "--select--", htmlAttributes: new { @class = "form-control" })
+                            @*@Html.DropDownList("SubCategory_id", null, htmlAttributes: new { @class = "form-control" })*@
+                            @Html.ValidationMessageFor(model => model.SubCategory_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Product_Name, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Product_Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Product_Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Product_Image, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
-                @Html.EditorFor(model => model.Product_Image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Product_Image, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
-                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    @*<div class="form-group">
+                        @Html.LabelFor(model => model.Product_Image, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Product_Image, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Product_Image, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
 
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @*@Html.HiddenFor(model => model.Product_Image)*@
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Update" class="btn btn-primary" />
-                <a href="@Url.Action("ProductList","Product")" class="btn btn-primary">Cancel</a>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Update" class="btn btn-primary" />
+                            <a href="@Url.Action("ProductList","Product")" class="btn btn-primary">Cancel</a>
 
-            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-4 center" style="border:solid 1px red; height:100%; ">
+
+                    <div class="user-profile">
+                        <input type="file" class="hidden" id="UploadImage" name="UserImageFile" />
+                        <img src="@Url.Content(Model.Product_Image)" class="img-responsive" id="UserImage" style="max-height:400px;" />
+
+                        @*<img src="~/Images/img-not-found.png" class="img-responsive" id="UserImage" style="max-height:400px;" />*@
+                        <div class="upload-photo" id="ImageUpload">
+                            <img src="~/Images/cam-pic.png" class="img-responsive" />
+                        </div>
+                        <div class="remove-photo">
+                            <span class="glyphicon glyphicon-remove" id="RemoveImage"></span>
+
+                        </div>
+
+                    </div>
+                </div>
         </div>
     </div>
-}
-
+                        }
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/UploadImage2.js"></script>

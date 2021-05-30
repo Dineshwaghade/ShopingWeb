@@ -21,6 +21,8 @@ namespace OnlineShopingWeb.Models.UserModel
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
         public string Role_Name { get; set; }
-        public string Status { get; set; }
+        public Status UserStatus { get; set; }
+
     }
+    public enum Status { Active, Inactive}
 }

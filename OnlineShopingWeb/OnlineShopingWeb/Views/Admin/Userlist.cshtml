@@ -36,6 +36,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Password)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=>model.UserStatus)
+        </th>
         <th></th>
     </tr>
 
@@ -60,9 +66,15 @@
             @Html.DisplayFor(modelItem => item.Password)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.User_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.User_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.User_id })
+            @Html.DisplayFor(modelItem => item.Role_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=>item.UserStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditUser", new { id=item.User_id }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.User_id }) |*@
+            @Html.ActionLink("Delete", "DeleteUser", new { id=item.User_id }, new { onclick = "return confirm('Are you sure want to delete this record?')" })
         </td>
     </tr>
 }

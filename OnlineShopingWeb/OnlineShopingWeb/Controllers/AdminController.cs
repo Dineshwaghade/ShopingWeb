@@ -17,6 +17,41 @@ namespace OnlineShopingWeb.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult EditUser(int id)
+        {
+            List<Role> lst = db.Roles.ToList();
+            ViewBag.RList = new SelectList(lst, "Role_Name", "Role_Name");
+
+            var data = db.Users.Find(id);
+            return View(data);
+        }
+        [HttpPost]
+        public ActionResult EditUser(User usr)
+        {
+            List<Role> lst = db.Roles.ToList();
+            ViewBag.RList = new SelectList(lst, "Role_Name", "Role_Name");
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(usr).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                ViewBag.Success = "Added Succesfully";
+                return RedirectToAction("Userlist", "Admin");
+            }
+            return View();
+        }
+        public ActionResult DeleteUser(int id)
+        {
+            var data = db.Users.Find(id);
+            if (data != null)
+            {
+                db.Users.Remove(data);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Userlist");
+        }
+
         public ActionResult Userlist()
         {
             var data = db.Users.ToList();

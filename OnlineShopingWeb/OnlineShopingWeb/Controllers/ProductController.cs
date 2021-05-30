@@ -2,6 +2,7 @@
 using OnlineShopingWeb.Models.ProductModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -146,7 +147,37 @@ namespace OnlineShopingWeb.Controllers
         public ActionResult AddProduct(Product prod)
         {
             if (ModelState.IsValid)
-            {
+           {
+                if (prod.UserImageFile != null)
+                {
+                    //------------- delete previous image from folder
+                    //if (prod.Product_Image != "~/Images/img-not-found.png")
+                    //{
+                    //    var imgpath = Server.MapPath(TempData["UserImage"].ToString());
+                    //    System.IO.File.Delete(imgpath);
+
+                    //}
+                    //--------- to insert new image in folder
+                    var filename = Path.GetFileNameWithoutExtension(prod.UserImageFile.FileName);
+                    var fileextension = Path.GetExtension(prod.UserImageFile.FileName);
+
+                    filename = filename + DateTime.Now.ToString("yymmssff") + fileextension;
+
+                    prod.Product_Image = "~/Images/ProductImages/" + filename;
+                    filename = Path.Combine(Server.MapPath("~/Images/ProductImages/"), filename);
+                    prod.UserImageFile.SaveAs(filename);
+                }
+
+                if (prod.Product_Image == "~/Images/img-not-found.png")
+                {
+                    prod.Product_Image = null;
+                    if (TempData["UserImage"].ToString() != null)
+                    {
+                        var imgpath = Server.MapPath(TempData["UserImage"].ToString());
+                        System.IO.File.Delete(imgpath);
+                    }
+                }
+
                 db.Products.Add(prod);
                 db.SaveChanges();
                 ViewBag.success = "Added Successfully";

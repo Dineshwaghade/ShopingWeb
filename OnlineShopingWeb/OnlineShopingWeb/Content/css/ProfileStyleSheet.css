@@ -1,0 +1,54 @@
+﻿body {
+}
+.user-profile {
+border:1px solid black;
+}
+
+.user-profile img{
+    cursor:pointer;
+    width:500px;
+}
+
+.user-profile .upload-photo{
+    background-color:red;
+    position:absolute;
+    bottom:0;
+    width:92%;
+    height:50px;
+    opacity:0.4;
+        cursor:pointer;
+    transform:scaleY(0);
+}
+.user-profile:hover .upload-photo{
+    transform:scaleY(1);
+    transition:0.5s;
+    transform-origin:bottom;
+}
+
+.user-profile:hover .upload-photo:before {
+    content:'Change Photo';
+    position:absolute;
+    color:white;
+    left:80px;
+    top:7px;
+    font-size:24px;
+    opacity:1;
+}
+.user-profile .upload-photo img{
+    height:50px;
+    width:70px;
+    left:7px;
+
+    position:absolute;
+}
+.user-profile .remove-photo{
+    color:black;
+    position:absolute;
+    top:0;
+    right:15px;
+    padding:10px;
+    cursor:pointer;
+}
+.user-profile .remove-photo:hover{
+    color:red;
+}

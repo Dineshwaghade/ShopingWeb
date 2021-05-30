@@ -102,6 +102,8 @@
     <Content Include="Content\assets\favicon.ico" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\CustomStyle.css" />
+    <Content Include="Content\css\ProfileStyleSheet.css" />
     <Content Include="Content\css\sb-admin.css" />
     <Content Include="Content\css\sb-admin.min.css" />
     <Content Include="Content\css\styles.css" />
@@ -113,6 +115,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Images\cam-pic.png" />
+    <Content Include="Images\img-not-found.png" />
+    <Content Include="Images\testimg.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -123,6 +128,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\UploadImage2.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
@@ -141,6 +147,7 @@
     <Compile Include="Models\ProductModel\SubCategory.cs" />
     <Compile Include="Models\UserModel\User.cs" />
     <Compile Include="Models\UserModel\Address.cs" />
+    <Compile Include="Models\ProductModel\ModelValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +181,7 @@
     <Folder Include="Content\dist\" />
     <Folder Include="Content\plugins\" />
     <Folder Include="Content\vendor\" />
+    <Folder Include="Images\ProductImages\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

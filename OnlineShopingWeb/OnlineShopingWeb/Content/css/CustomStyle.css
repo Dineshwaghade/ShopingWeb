@@ -1,0 +1,29 @@
+﻿body {
+}
+
+.product-image{
+    border:1 solid blue;
+    border-radius:3px;
+}
+
+.product-image img{
+    height:300px;
+}
+
+.product-image .remove-photo{
+position:absolute;
+right:15px;
+top:0;
+border:2px solid black;
+padding:10px;
+    cursor:pointer;
+
+}
+
+.product-image .remove-photo .glyphicon-remove{
+    color:red;
+}
+
+.product-image .remove-photo:hover .glyphicon-remove{
+    color:blue;
+}

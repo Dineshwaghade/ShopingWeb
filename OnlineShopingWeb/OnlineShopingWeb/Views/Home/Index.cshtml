@@ -46,7 +46,7 @@
                                     <div class="bi-star-fill"></div>
                                 </div>*@
                                 <!-- Product price-->
-                                @item.Price
+                                &#8377; @item.Price
                                 <div>
                                     @if (item.Product_Qty.ToString().IsEmpty() || item.Product_Qty == 0)
                                     {
@@ -67,7 +67,7 @@
                                }
                                else
                                {
-                                <a class="btn btn-outline-dark mt-auto" href="@Url.Action("ProductDetails","Product",new {@id=item.Product_id })">Add to cart</a>
+                                <a class="btn btn-outline-dark mt-auto" href="@Url.Action("ProductDetails","Home",new {@id=item.Product_id })">Add to cart</a>
                                }
 
                             </div>

@@ -47,11 +47,30 @@
                                 </div>*@
                                 <!-- Product price-->
                                 @item.Price
+                                <div>
+                                    @if (item.Product_Qty.ToString().IsEmpty() || item.Product_Qty == 0)
+                                    {
+                                        <span class="text-danger text-center"><b>Out of stock</b></span>
+
+                                    }
+
+                                </div>
+                                
                             </div>
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                            <div class="text-center">
+                               @if (item.Product_Qty.ToString().IsEmpty() || item.Product_Qty == 0)
+                               {
+                                <a class="btn btn-outline-dark mt-auto disabled" href="@Url.Action("ProductDetails","Product")">Add to cart</a>
+                               }
+                               else
+                               {
+                                <a class="btn btn-outline-dark mt-auto" href="@Url.Action("ProductDetails","Product",new {@id=item.Product_id })">Add to cart</a>
+                               }
+
+                            </div>
                         </div>
                     </div>
                 </div>

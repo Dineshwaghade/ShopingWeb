@@ -15,9 +15,10 @@ namespace OnlineShopingWeb.Models.ProductModel
         public string Product_Name { get; set; }
         public string Description { get; set; }
         public string Product_Image { get; set; }
-        [Range(0,double.MaxValue,ErrorMessage ="Please enter price")]
         public string Price{ get; set; }
-        [ForeignKey("SubCategory")]
+        public double Product_Rating { get; set; }
+        public int Product_Qty { get; set; }
+        [ForeignKey("SubCategory_id")]
         public Nullable<int> SubCategory_id { get; set; }
         public virtual SubCategory SubCategory { get; set; }
     }

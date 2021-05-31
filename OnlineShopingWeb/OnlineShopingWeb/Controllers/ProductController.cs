@@ -141,11 +141,18 @@ namespace OnlineShopingWeb.Controllers
             List<SubCategory> lst = db.SubCategories.ToList();
             ViewBag.SCList = new SelectList(lst, "SubCategory_id", "SubCategory_Name");
             ViewBag.ProductList = db.Products.ToList();
+            if (TempData["Success"] != null)
+            {
+                ViewBag.success = TempData["Success"].ToString();
+            }
             return View();
         }
         [HttpPost]
         public ActionResult AddProduct(Product prod)
         {
+            List<SubCategory> lst = db.SubCategories.ToList();
+            ViewBag.SCList = new SelectList(lst, "SubCategory_id", "SubCategory_Name");
+
             if (ModelState.IsValid)
            {
                 if (prod.UserImageFile != null)
@@ -180,13 +187,15 @@ namespace OnlineShopingWeb.Controllers
 
                 db.Products.Add(prod);
                 db.SaveChanges();
-                ViewBag.success = "Added Successfully";
+                TempData["Success"] = "Added Successfully";
+                TempData.Keep();
+                return RedirectToAction("AddProduct", "Product");
             }
             ViewBag.ProductList = db.Products.ToList();
 
 
 
-            return RedirectToAction("AddProduct");
+            return View();
         }
 
         [HttpGet]

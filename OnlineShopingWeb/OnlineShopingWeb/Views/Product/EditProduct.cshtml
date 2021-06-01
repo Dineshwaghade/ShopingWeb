@@ -80,7 +80,7 @@
                         </div>
                     </div>
 
-                    @*@Html.HiddenFor(model => model.Product_Image)*@
+                    @Html.HiddenFor(model => model.Product_Image)
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
@@ -95,6 +95,7 @@
 
                     <div class="user-profile">
                         <input type="file" class="hidden" id="UploadImage" name="UserImageFile" />
+                        @*<img src="@Url.Content(Model.Product_Image)" class="img-responsive" id="UserImage" style="max-height:400px;" />*@
                         <img src="@Url.Content(Model.Product_Image)" class="img-responsive" id="UserImage" style="max-height:400px;" />
 
                         @*<img src="~/Images/img-not-found.png" class="img-responsive" id="UserImage" style="max-height:400px;" />*@
@@ -112,4 +113,4 @@
     </div>
                         }
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/UploadImage2.js"></script>
+<script src="~/Scripts/UploadImage4.js"></script>

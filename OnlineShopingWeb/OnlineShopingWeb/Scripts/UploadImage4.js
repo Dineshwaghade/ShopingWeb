@@ -20,11 +20,15 @@ $('#UploadImage').change(function () {
 });
 
 $('#RemoveImage').click(function () {
-   
         $('#UserImage').attr('src', "/Images/img-not-found.png");
   
-        $('#Photo').val('~/Images/img-not-found.png');
-        
+    //We can use property name as id name
+        $('#Product_Image').val('~/Images/img-not-found.png');
+    
+    //to reset file control when file selected and removed 
+        var input = $("#UploadImage");
+            input.replaceWith(input.val('').clone(true));
+
 });
 
 
